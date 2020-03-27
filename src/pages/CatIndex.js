@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ListGroup, ListGroupItemHeading } from 'reactstrap';
+
 class CatIndex extends Component{
   render(){
     return(
@@ -12,6 +13,7 @@ class CatIndex extends Component{
     <ListGroup key={ index }>
       <h4>{ cat.name }</h4>
       <small>{ cat.age } - { cat.enjoys }</small>
+      <br/>
     </ListGroup>
     )
   })}

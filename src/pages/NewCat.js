@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { BrowserRouter as Router, Link, Redirect } from "react-router-dom"
+import './cat.css'
 
 class NewCat extends Component {
     constructor(props){
         super(props)
         this.state = {
+            success: false,
             form:{
                 name: '',
                 age: '',
@@ -21,8 +24,9 @@ class NewCat extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.handleNewCat(this.state.form)
+        this.props.handleCreateCat (this.state.form)
         this.setState({
+            success: true,
             form:{
                 name: '',
                 age: '',
@@ -34,7 +38,8 @@ class NewCat extends Component {
     render(){
         return(
             <>
-                <Form ref="form" onSubmit={this.handleSubmit}>
+            <Router>
+                <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor="name" id="name">Name</Label>
                             <Input
@@ -57,9 +62,19 @@ class NewCat extends Component {
                                 onChange={ this.handleChange }
                                 value={ this.state.form.enjoys }
                             />
-                            <Button id="submit" type="submit">Add New Cat</Button>
+                            <Link to="/catindex">
+                                <Button
+                                    name="submit"
+                                    id="submit"
+                                    onClick={ this.handleSubmit }
+                                >
+                                    Create a New Profile
+                                </Button>
+                                { this.state.success && <Redirect to="/catindex"/> }
+                            </Link> 
                     </FormGroup>
                 </Form>
+                </Router>
             </>
         )
     }

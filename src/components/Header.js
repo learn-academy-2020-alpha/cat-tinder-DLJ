@@ -7,7 +7,7 @@ class Header extends Component {
             <div>
             <Jumbotron>
                 <h1 className="display-3">Cat Tinder!</h1>
-                <p className="lead">Match with your cat sweetheart 💕:)</p>
+                <p className="lead">Match with your cat sweetheart <span role="img" aria-label="heart">💕</span>:)</p>
             </Jumbotron>
             </div>
      )
